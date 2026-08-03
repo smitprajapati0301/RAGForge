@@ -1,0 +1,11 @@
+Artificial Intelligence is transforming industries.
+
+Machine Learning is a subset of AI.
+
+Deep Learning is a subset of Machine Learning.
+
+Natural Language Processing enables machines to understand text.
+
+Computer Vision enables machines to understand images.
+
+AI is used in healthcare, finance, robotics, education, and cybersecurity.
