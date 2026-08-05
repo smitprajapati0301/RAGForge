@@ -1,21 +1,66 @@
+# ==========================================
+# RAGForge Configuration
+# ==========================================
+
 project:
   name: RAGForge
   version: 1.0.0
 
+# ------------------------------------------
+# Server Configuration
+# ------------------------------------------
 server:
-  host: 0.0.0.0
+  host: "0.0.0.0"
   port: 8000
 
-chunking:
-  chunk_size: 700
-  chunk_overlap: 100
+# ------------------------------------------
+# Document Preprocessing
+# ------------------------------------------
+preprocessing:
+  chunk_size: 100
+  chunk_overlap: 20
 
+# ------------------------------------------
+# Embedding Model
+# ------------------------------------------
+embedding:
+  model_name: "BAAI/bge-base-en-v1.5"
+  normalize_embeddings: true
+  batch_size: 32
+
+# ------------------------------------------
+# Vector Database
+# ------------------------------------------
+vector_db:
+  provider: "chroma"
+  collection_name: "ragforge"
+  persist_directory: "./chroma_db"
+
+# ------------------------------------------
+# Retrieval
+# ------------------------------------------
 retrieval:
   top_k: 10
-  rerank_top_k: 5
 
-embedding:
-  model: BAAI/bge-base-en-v1.5
+# ------------------------------------------
+# Re-Ranking (Phase 7)
+# ------------------------------------------
+reranking:
+  enabled: true
+  top_k: 5
+  model_name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
-vector_db:
-  provider: chroma
+# ------------------------------------------
+# LLM (Phase 8)
+# ------------------------------------------
+llm:
+  provider: "groq"
+  model_name: "llama-3.3-70b-versatile"
+  temperature: 0.2
+  max_tokens: 1024
+
+# ------------------------------------------
+# Evaluation (Phase 9)
+# ------------------------------------------
+evaluation:
+  enabled: true

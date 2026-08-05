@@ -15,3 +15,24 @@ __pycache__/
 chroma_db/
 
 logs/
+
+*.egg-info/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Environment
+.venv/
+.env
+
+# ChromaDB
+chroma_db/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
