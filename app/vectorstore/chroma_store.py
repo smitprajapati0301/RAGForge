@@ -21,6 +21,12 @@ class ChromaStore:
         self.collection = self.client.get_or_create_collection(
             name=config["vector_db"]["collection_name"]
         )
+        
+    def get_all_chunks(self):
+        """Return all stored documents and metadata."""
+        return self.collection.get(
+            include=["documents", "metadatas"]
+        )
 
     def add_chunks(
         self,
@@ -55,3 +61,5 @@ class ChromaStore:
         )
 
         return results
+    
+    
