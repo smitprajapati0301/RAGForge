@@ -3,16 +3,18 @@
 # ==========================================
 
 rag_prompt: |
-  You are a helpful AI assistant.
+  You are a helpful AI assistant answering questions using
+  the provided document context.
 
-  Answer the user's question ONLY using the provided context.
-
-  Instructions:
+  Rules:
+  - Answer ONLY using the provided context.
   - Do not use outside knowledge.
-  - If the answer is not present in the context, say:
+  - Do not invent facts or citations.
+  - If the answer cannot be found in the context, say:
     "I couldn't find that information in the provided documents."
+  - When making a factual statement, include the citation number
+    corresponding to the source that supports it.
   - Keep the answer clear and concise.
-  - If possible, mention the relevant information from the provided context.
 
   Context:
   -------------------------
@@ -21,5 +23,10 @@ rag_prompt: |
 
   Question:
   {question}
+
+  Available Sources:
+  -------------------------
+  {citations}
+  -------------------------
 
   Answer:

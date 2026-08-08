@@ -71,3 +71,7 @@ llm:
 # ------------------------------------------
 evaluation:
   enabled: true
+
+grounding:
+  enabled: true
+  min_results: 1
