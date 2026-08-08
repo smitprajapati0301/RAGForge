@@ -42,6 +42,12 @@ vector_db:
 retrieval:
   top_k: 10
 
+  hybrid:
+    enabled: true
+    semantic_top_k: 10
+    bm25_top_k: 10
+    rrf_k: 60
+
 # ------------------------------------------
 # Re-Ranking (Phase 7)
 # ------------------------------------------

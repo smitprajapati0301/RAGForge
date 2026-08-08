@@ -1,7 +1,7 @@
 """
 BM25 Retriever
 
-Indexes document chunks using BM25 and performs keyword search.
+Keyword-based retrieval using BM25.
 """
 
 from rank_bm25 import BM25Okapi
@@ -17,7 +17,7 @@ class BM25Retriever:
 
         self.chunks = chunks
 
-        # Tokenize all chunks once to build the BM25 index.
+        # Tokenize the corpus once when creating the BM25 index.
         tokenized_corpus = [
             Tokenizer.tokenize(chunk.text)
             for chunk in chunks
@@ -31,7 +31,7 @@ class BM25Retriever:
         top_k: int = 5,
     ) -> list[tuple[Chunk, float]]:
         """
-        Retrieve the most relevant chunks using BM25.
+        Retrieve chunks using BM25 scores.
         """
 
         query_tokens = Tokenizer.tokenize(query)
@@ -40,8 +40,24 @@ class BM25Retriever:
 
         ranked = sorted(
             zip(self.chunks, scores),
-            key=lambda x: x[1],
+            key=lambda item: item[1],
             reverse=True,
         )
 
         return ranked[:top_k]
+
+    def retrieve_ids(
+        self,
+        query: str,
+        top_k: int = 5,
+    ) -> list[str]:
+        """
+        Return ranked chunk IDs for RRF.
+        """
+
+        results = self.retrieve(query, top_k)
+
+        return [
+            chunk.chunk_id
+            for chunk, _ in results
+        ]

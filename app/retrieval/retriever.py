@@ -1,8 +1,7 @@
 """
 Semantic Retriever
 
-Converts a user query into an embedding and
-retrieves the most relevant chunks from ChromaDB.
+Retrieves chunks using vector similarity search.
 """
 
 from app.core.config import config
@@ -18,24 +17,38 @@ class Retriever:
         self.embedding_service = EmbeddingService()
         self.vector_store = ChromaStore()
 
-    def retrieve(self, query: str):
+    def retrieve(
+        self,
+        query: str,
+        top_k: int | None = None,
+    ):
         """
-        Retrieve the Top-K most relevant chunks.
-
-        Args:
-            query: User question.
-
-        Returns:
-            ChromaDB search results.
+        Retrieve the most relevant chunks using semantic search.
         """
 
-        # Convert the user query into an embedding
+        if top_k is None:
+            top_k = config["retrieval"]["top_k"]
+
+        # Convert the user's query into a vector.
         query_embedding = self.embedding_service.embed(query)
 
-        # Search ChromaDB
-        results = self.vector_store.search(
+        # Search the vector database.
+        return self.vector_store.search(
             query_embedding=query_embedding,
-            top_k=config["retrieval"]["top_k"],
+            top_k=top_k,
         )
 
-        return results
+    def retrieve_ids(
+        self,
+        query: str,
+        top_k: int | None = None,
+    ) -> list[str]:
+        """
+        Return only the ranked chunk IDs.
+
+        This format is useful for hybrid retrieval and RRF.
+        """
+
+        results = self.retrieve(query, top_k)
+
+        return results["ids"][0]
