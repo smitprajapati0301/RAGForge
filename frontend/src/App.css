@@ -1,0 +1,9 @@
+/*
+ * RAGForge application-specific styles.
+ *
+ * Most UI styling is handled by Tailwind CSS.
+ */
+
+#root {
+  min-height: 100vh;
+}

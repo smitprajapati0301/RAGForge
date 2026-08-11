@@ -1,38 +1,73 @@
-.venv/
-
-.env
+# ==============================
+# Python
+# ==============================
 
 __pycache__/
+*.py[cod]
+*$py.class
+
+.venv/
+venv/
+env/
+
+# ==============================
+# Environment variables
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# ==============================
+# ChromaDB / local vector store
+# ==============================
+
+chroma_db/
+
+# ==============================
+# Python tooling
+# ==============================
 
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-.vscode/
-
-.idea/
-
-*.pyc
-
-chroma_db/
-
-logs/
-
-*.egg-info/
-
-# Python
-__pycache__/
-*.pyc
-*.egg-info/
-
-# Environment
-.venv/
-.env
-
-# ChromaDB
-chroma_db/
-
-# IDE
-.vscode/
-.idea/
-
+# ==============================
 # Logs
-logs/
+# ==============================
+
+*.log
+
+# ==============================
+# Node / React
+# ==============================
+
+frontend/node_modules/
+frontend/dist/
+
+node_modules/
+dist/
+
+# ==============================
+# Temporary files
+# ==============================
+
+*.tmp
+~$*.docx
+~WRL*.tmp
+
+# ==============================
+# Personal learning documents
+# ==============================
+
+*.docx
+
+# ==============================
+# OS files
+# ==============================
+
+.DS_Store
+Thumbs.db
+
+# Python build metadata
+*.egg-info/

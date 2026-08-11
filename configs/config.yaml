@@ -17,9 +17,8 @@ server:
 # Document Preprocessing
 # ------------------------------------------
 preprocessing:
-  chunk_size: 100
-  chunk_overlap: 20
-
+  chunk_size: 700
+  chunk_overlap: 100
 # ------------------------------------------
 # Embedding Model
 # ------------------------------------------
@@ -67,11 +66,16 @@ llm:
   max_tokens: 1024
 
 # ------------------------------------------
-# Evaluation (Phase 9)
+# Evaluation
 # ------------------------------------------
+
 evaluation:
   enabled: true
+  dataset_path: "evals/datasets/rag_dataset.json"
+  results_path: "evals/results"
 
-grounding:
-  enabled: true
-  min_results: 1
+  metrics:
+    - faithfulness
+    - answer_relevancy
+    - context_precision
+    - context_recall

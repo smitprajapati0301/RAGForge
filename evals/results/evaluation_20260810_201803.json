@@ -1,0 +1,36 @@
+{
+  "project": "RAGForge",
+  "evaluation_timestamp": "2026-08-10T20:18:03.715362",
+  "dataset_size": 3,
+  "successful_evaluations": 2,
+  "average_scores": {
+    "faithfulness": 1.0,
+    "answer_relevancy": 0.4070237035757504,
+    "context_precision": 0.9999999999625,
+    "context_recall": 0.5
+  },
+  "individual_results": [
+    {
+      "question": "What is artificial intelligence?",
+      "ground_truth": "Artificial intelligence is the simulation of human intelligence by machines.",
+      "answer": "The provided context doesn't explicitly define what Artificial Intelligence is, it only mentions its applications and subsets, such as Machine Learning [1] and Deep Learning [1], which is a subset of Machine Learning [1].",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.0,
+        "context_precision": 0.999999999975,
+        "context_recall": 0.0
+      }
+    },
+    {
+      "question": "What is machine learning?",
+      "ground_truth": "Machine learning is a subset of artificial intelligence in which systems learn patterns from data.",
+      "answer": "Machine Learning is a subset of AI [1].",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.8140474071515008,
+        "context_precision": 0.99999999995,
+        "context_recall": 1.0
+      }
+    }
+  ]
+}
