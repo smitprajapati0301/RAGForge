@@ -45,11 +45,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install -e .
+
+      # ------------------------------------------
+      # Verify application import
+      # ------------------------------------------
+
+      - name: Verify RAGForge package
+        env:
+          PYTHONPATH: .
+        run: |
+          python -c "from app.main import app; print('RAGForge package import OK')"
 
       # ------------------------------------------
       # Run unit tests
       # ------------------------------------------
 
       - name: Run tests
+        env:
+          PYTHONPATH: .
         run: |
           pytest -q
