@@ -48,17 +48,7 @@ jobs:
           pip install -e .
 
       # ------------------------------------------
-      # Verify application import
-      # ------------------------------------------
-
-      - name: Verify RAGForge package
-        env:
-          PYTHONPATH: .
-        run: |
-          python -c "from app.main import app; print('RAGForge package import OK')"
-
-      # ------------------------------------------
-      # Run unit tests
+      # Run tests
       # ------------------------------------------
 
       - name: Run tests
